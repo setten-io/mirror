@@ -1,6 +1,5 @@
 import Tooltips from "../../lang/Tooltips"
 import { formatAsset } from "../../libs/parse"
-import { capitalize } from "../../libs/utils"
 import getLpName from "../../libs/getLpName"
 import { useProtocol } from "../../data/contract/protocol"
 import { useMyFarming } from "../../data/my/farming"
@@ -97,19 +96,26 @@ const Farming = () => {
         {
           key: "actions",
           dataIndex: "token",
-          render: (token) => (
-            <LinkButton
-              to={{
-                pathname: getPath(MenuKey.STAKE),
-                hash: StakeType.UNSTAKE,
-                state: { token },
-              }}
-              size="xs"
-              outline
-            >
-              {capitalize(StakeType.UNSTAKE)}
-            </LinkButton>
-          ),
+          render: (token) => {
+            const to = {
+              pathname: getPath(MenuKey.STAKE),
+              hash: StakeType.UNSTAKE,
+            }
+            return (
+              <>
+                <LinkButton to={{ ...to, state: { token } }} size="xs" outline>
+                  Unbond
+                </LinkButton>
+                <LinkButton
+                  to={{ ...to, state: { token, withdraw: true } }}
+                  size="xs"
+                  outline
+                >
+                  Withdraw
+                </LinkButton>
+              </>
+            )
+          },
           align: "right",
           fixed: "right",
         },
