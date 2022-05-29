@@ -1,3 +1,7 @@
+# ⚠️ Unmaintained
+
+Given the general lack of support for Mirror pre and post Terra 2022 crash, we're closing our Mirror front-end mirror.
+
 # Mirror Web App (Terra)
 
 ![Banner](banner.png)
